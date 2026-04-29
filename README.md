@@ -22,7 +22,7 @@ The Fact table containing the analyzed context must be created. Similarly, dimen
 
 - Ex: course offering dates, course offering dates, among others. The format, or rather, the granularity, is not fixed. Different formats can be used that correspond to different levels of granularity.
 
-![Screenshot](./img/page_one.png)
+![Screenshot](./img/Star_Schema.png)
 
 [LICENSE](/LICENSE)
 

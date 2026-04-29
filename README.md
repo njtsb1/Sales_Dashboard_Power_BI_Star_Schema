@@ -22,6 +22,12 @@ The Fact table containing the analyzed context must be created. Similarly, dimen
 
 - Ex: course offering dates, course offering dates, among others. The format, or rather, the granularity, is not fixed. Different formats can be used that correspond to different levels of granularity.
 
+- Relational Diagram
+
+![Screenshot](./img/relational_diagram.png)
+
+- Star Schema
+
 ![Screenshot](./img/Star_Schema.png)
 
 [LICENSE](/LICENSE)

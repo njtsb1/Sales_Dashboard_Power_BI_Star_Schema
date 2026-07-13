@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sales Dashboard Power BI — Star Schema</title>
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+<body class="theme-dark" data-lang="en">
+  <header class="site-header" role="banner">
+    <div class="brand">
+      <h1 class="brand-title">Sales Dashboard Power BI</h1>
+      <p class="brand-sub">Star Schema</p>
+    </div>
+
+    <nav class="top-nav" role="navigation" aria-label="Main navigation">
+      <ul class="nav-list">
+        <li><a href="index.html" class="nav-link">Relational</a></li>
+        <li><a href="star_schema.html" class="nav-link active" aria-current="page">Star Schema</a></li>
+      </ul>
+    </nav>
+
+    <div class="controls">
+      <button id="langBtn2" class="icon-btn" aria-haspopup="true" aria-expanded="false" title="Language">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" /></svg>
+        <span class="visually-hidden">Language</span>
+      </button>
+
+      <button id="themeToggle2" class="icon-btn" aria-pressed="true" title="Toggle theme">
+        <svg id="themeIcon2" class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+        </svg>
+        <span class="visually-hidden">Toggle theme</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main2" class="container" role="main">
+    <section class="panel" aria-labelledby="starTitle">
+      <h2 id="starTitle">Star Schema — Focus: Professor</h2>
+
+      <p class="lead" id="starIntro">
+        Dimensional model centered on professor analytics. The fact table captures teaching and performance measures; dimensions provide descriptive context.
+      </p>
+
+      <div class="schema-wrap">
+        <div class="fact-area" aria-labelledby="factTitle">
+          <h3 id="factTitle">FactProfessorTeaching</h3>
+          <div class="fact-card">
+            <ul>
+              <li><strong>FactID</strong> (surrogate PK)</li>
+              <li><strong>ProfessorID</strong> (FK)</li>
+              <li><strong>CourseID</strong> (FK)</li>
+              <li><strong>DisciplineID</strong> (FK)</li>
+              <li><strong>DepartmentID</strong> (FK)</li>
+              <li><strong>DateID</strong> (FK)</li>
+              <li><strong>TeachingHours</strong> (measure)</li>
+              <li><strong>CoursesTaughtCount</strong> (measure)</li>
+              <li><strong>AvgCourseEnrollment</strong> (measure)</li>
+              <li><strong>PublicationsCount</strong> (measure)</li>
+              <li><strong>ResearchGrantsAmount</strong> (measure)</li>
+              <li><strong>Salary</strong> (measure)</li>
+              <li><strong>TenureStatus</strong> (attribute)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="dims-area">
+          <article class="dim" id="dimProfessor" tabindex="0" aria-labelledby="dimProfessorTitle">
+            <h4 id="dimProfessorTitle">DimProfessor</h4>
+            <ul>
+              <li>ProfessorID (PK)</li>
+              <li>FullName</li>
+              <li>HireDate</li>
+              <li>Rank</li>
+              <li>Title</li>
+              <li>Gender</li>
+              <li>BirthDate</li>
+              <li>Email</li>
+              <li>DepartmentID (FK)</li>
+            </ul>
+          </article>
+
+          <article class="dim" id="dimDepartment" tabindex="0" aria-labelledby="dimDepartmentTitle">
+            <h4 id="dimDepartmentTitle">DimDepartment</h4>
+            <ul>
+              <li>DepartmentID (PK)</li>
+              <li>DepartmentName</li>
+              <li>Campus</li>
+              <li>CoordinatorProfessorID (FK)</li>
+            </ul>
+          </article>
+
+          <article class="dim" id="dimCourse" tabindex="0" aria-labelledby="dimCourseTitle">
+            <h4 id="dimCourseTitle">DimCourse</h4>
+            <ul>
+              <li>CourseID (PK)</li>
+              <li>CourseName</li>
+              <li>Level</li>
+              <li>Credits</li>
+              <li>DepartmentID (FK)</li>
+            </ul>
+          </article>
+
+          <article class="dim" id="dimDiscipline" tabindex="0" aria-labelledby="dimDisciplineTitle">
+            <h4 id="dimDisciplineTitle">DimDiscipline</h4>
+            <ul>
+              <li>DisciplineID (PK)</li>
+              <li>DisciplineName</li>
+              <li>SemesterOffered</li>
+              <li>Credits</li>
+            </ul>
+          </article>
+
+          <article class="dim" id="dimResearch" tabindex="0" aria-labelledby="dimResearchTitle">
+            <h4 id="dimResearchTitle">DimResearch</h4>
+            <ul>
+              <li>GrantID (PK)</li>
+              <li>GrantAmount</li>
+              <li>GrantStartDate</li>
+              <li>GrantEndDate</li>
+            </ul>
+          </article>
+
+          <article class="dim" id="dimDate" tabindex="0" aria-labelledby="dimDateTitle">
+            <h4 id="dimDateTitle">DimDate</h4>
+            <ul>
+              <li>DateID (PK)</li>
+              <li>Date</li>
+              <li>Day</li>
+              <li>Month</li>
+              <li>Quarter</li>
+              <li>Year</li>
+              <li>Semester</li>
+              <li>AcademicYear</li>
+              <li>CourseOfferingDate</li>
+              <li>CourseEndDate</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+
+      <section class="design-guidelines" aria-labelledby="guidelinesTitle">
+        <h3 id="guidelinesTitle">Design & UI Guidelines Implemented</h3>
+        <ul>
+          <li><strong>Positioning</strong> — Golden ratio inspired layout: content column ~61.8% and sidebar ~38.2% for desktop.</li>
+          <li><strong>Contrast</strong> — Dark mode default with high contrast text; light mode available.</li>
+          <li><strong>Proportion</strong> — Cards and typography sized for visual hierarchy.</li>
+          <li><strong>Segmentation</strong> — Clear separation of fact and dimensions for drill-down UX.</li>
+          <li><strong>Navigation</strong> — Buttons and menus on every page; keyboard accessible and ARIA labeled.</li>
+        </ul>
+      </section>
+
+      <div class="actions">
+        <a class="btn" href="index.html" role="button">Back to Relational</a>
+        <button class="btn primary" id="exportBtn">Copy Schema Summary</button>
+      </div>
+
+      <div id="copyNotice" class="card hidden" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <small>© 2026 — Sales Dashboard Power BI — Dimensional model demo</small>
+  </footer>
+
+  <div id="langMenu2" class="lang-menu" role="menu" aria-hidden="true">
+    <button class="lang-item" data-lang="en">English (EN-US)</button>
+    <button class="lang-item" data-lang="pt-BR">Português (PT-BR)</button>
+    <button class="lang-item" data-lang="es">Español (ES)</button>
+  </div>
+
+  <script src="./src/script.js" defer></script>
+</body>
+</html>

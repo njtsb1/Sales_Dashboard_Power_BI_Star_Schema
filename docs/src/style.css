@@ -1,0 +1,127 @@
+:root{
+  --bg:#0b0b0d;
+  --panel:#0f1720;
+  --muted:#9aa4b2;
+  --text:#e6eef6;
+  --accent:#4fd1c5;
+  --card:#0f1720;
+  --primary:#2b6cb0;
+  --success:#48bb78;
+  --danger:#f56565;
+  --radius:10px;
+  --gap:1rem;
+  --max-width:1100px;
+  --golden:61.8%;
+  --sidebar:38.2%;
+  --font-sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+}
+
+[data-theme="light"], .theme-light {
+  --bg:#ffffff;
+  --panel:#f7fafc;
+  --muted:#4a5568;
+  --text:#0b1220;
+  --accent:#0ea5a4;
+  --card:#ffffff;
+  --primary:#2563eb;
+  --success:#16a34a;
+  --danger:#dc2626;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:var(--font-sans);
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+}
+
+/* Header */
+.site-header{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  padding:1rem;
+  background:linear-gradient(90deg, rgba(255,255,255,0.02), transparent);
+  border-bottom:1px solid rgba(255,255,255,0.03);
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+.brand{flex:1}
+.brand-title{margin:0;font-size:1.05rem}
+.brand-sub{margin:0;font-size:.8rem;color:var(--muted)}
+
+.top-nav .nav-list{list-style:none;margin:0;padding:0;display:flex;gap:.5rem}
+.nav-link{
+  color:var(--muted);
+  text-decoration:none;
+  padding:.4rem .6rem;
+  border-radius:6px;
+}
+.nav-link.active, .nav-link:focus, .nav-link:hover{
+  background:rgba(255,255,255,0.03);
+  color:var(--text);
+}
+
+/* Controls */
+.controls{display:flex;gap:.5rem;align-items:center}
+.icon-btn{
+  background:transparent;border:1px solid rgba(255,255,255,0.04);
+  color:var(--text);padding:.4rem;border-radius:8px;cursor:pointer;
+}
+.icon{width:20px;height:20px;fill:var(--accent);stroke:none}
+
+/* Layout */
+.container{max-width:var(--max-width);margin:1.25rem auto;padding:0 1rem}
+.panel{background:transparent;padding:0}
+.lead{color:var(--muted);margin-top:.25rem}
+
+/* Golden ratio layout */
+.layout{display:flex;gap:var(--gap);align-items:flex-start}
+.sidebar{flex:0 0 var(--sidebar);min-width:220px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);padding:1rem;border-radius:var(--radius)}
+.content{flex:1;padding:1rem;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border-radius:var(--radius)}
+
+/* ERD boxes */
+.erd{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;align-items:start;margin-top:1rem}
+.entity{background:var(--card);padding:.6rem;border-radius:8px;border:1px solid rgba(255,255,255,0.03)}
+.entity-header{font-weight:700;margin:0 0 .4rem 0}
+.attributes{list-style:none;padding:0;margin:0;color:var(--muted)}
+.entity.fact{background:linear-gradient(90deg, rgba(79,209,197,0.06), rgba(43,108,176,0.04));border:1px solid rgba(79,209,197,0.12)}
+
+/* Buttons */
+.btn{display:inline-block;padding:.6rem .9rem;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text);cursor:pointer;text-decoration:none}
+.btn.primary{background:var(--accent);color:#042022;border:none}
+.actions{margin-top:1rem;display:flex;gap:.6rem;flex-wrap:wrap}
+
+/* Cards */
+.card{background:var(--panel);padding:1rem;border-radius:8px;border:1px solid rgba(255,255,255,0.03);margin-top:1rem}
+.hidden{display:none}
+
+/* Star schema layout */
+.schema-wrap{display:grid;grid-template-columns:1fr 360px;gap:1rem;align-items:start;margin-top:1rem}
+.fact-area{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:1rem;border-radius:8px}
+.fact-card ul{list-style:none;padding:0;margin:0;color:var(--muted)}
+.dims-area{display:grid;grid-template-columns:repeat(1,1fr);gap:.8rem}
+.dim{background:var(--card);padding:.8rem;border-radius:8px;border:1px solid rgba(255,255,255,0.03)}
+.dim h4{margin:0 0 .4rem 0}
+
+/* Responsive */
+@media (max-width:900px){
+  .layout{flex-direction:column}
+  .schema-wrap{grid-template-columns:1fr}
+  .sidebar{order:2}
+  .erd{grid-template-columns:repeat(2,1fr)}
+}
+
+/* Accessibility helpers */
+.visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
+
+/* Language menu */
+.lang-menu{position:fixed;right:1rem;top:4.5rem;background:var(--panel);border:1px solid rgba(255,255,255,0.04);padding:.5rem;border-radius:8px;display:flex;flex-direction:column;gap:.25rem}
+.lang-item{background:transparent;border:none;color:var(--text);padding:.4rem .6rem;border-radius:6px;cursor:pointer}
+.lang-item:hover, .lang-item:focus{background:rgba(255,255,255,0.02)}

@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sales Dashboard Power BI — Relational Diagram</title>
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+<body class="theme-dark" data-lang="en">
+  <header class="site-header" role="banner">
+    <div class="brand">
+      <h1 class="brand-title">Sales Dashboard Power BI</h1>
+      <p class="brand-sub">Relational Diagram</p>
+    </div>
+
+    <nav class="top-nav" role="navigation" aria-label="Main navigation">
+      <ul class="nav-list">
+        <li><a href="index.html" class="nav-link active" aria-current="page">Relational</a></li>
+        <li><a href="star_schema.html" class="nav-link">Star Schema</a></li>
+      </ul>
+    </nav>
+
+    <div class="controls">
+      <button id="langBtn" class="icon-btn" aria-haspopup="true" aria-expanded="false" title="Language">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" /></svg>
+        <span class="visually-hidden">Language</span>
+      </button>
+
+      <button id="themeToggle" class="icon-btn" aria-pressed="true" title="Toggle theme">
+        <!-- Moon icon (dark) / Sun icon (light) swapped by JS -->
+        <svg id="themeIcon" class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+        </svg>
+        <span class="visually-hidden">Toggle theme</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main" class="container" role="main">
+    <section class="panel" aria-labelledby="relationalTitle">
+      <h2 id="relationalTitle">Relational Diagram</h2>
+
+      <p class="lead" id="introText">
+        This page shows the original relational model used as source for the dimensional design. Focus: **Professor** as the analysis subject.
+      </p>
+
+      <div class="layout">
+        <aside class="sidebar" aria-labelledby="legendTitle">
+          <h3 id="legendTitle">Legend & Notes</h3>
+          <ul>
+            <li><strong>PK</strong> — Primary Key</li>
+            <li><strong>FK</strong> — Foreign Key</li>
+            <li>We exclude student-level analytics per requirements.</li>
+            <li>Use the Star Schema page to view the dimensional model.</li>
+          </ul>
+
+          <nav class="page-menu" aria-label="Page menu">
+            <button class="menu-btn" data-target="relational" aria-pressed="true">Overview</button>
+            <button class="menu-btn" data-target="entities" aria-pressed="false">Entities</button>
+            <button class="menu-btn" data-target="notes" aria-pressed="false">Design Notes</button>
+          </nav>
+        </aside>
+
+        <section class="content" aria-labelledby="diagramTitle">
+          <h3 id="diagramTitle">ER Diagram (simplified)</h3>
+
+          <div class="erd" role="img" aria-label="Relational diagram showing dCourse, dDepartment, dPreRequisite, dStudent, dDiscipline and fProfessor">
+            <!-- Semantic, accessible representation of the relational model using HTML/CSS boxes -->
+            <div class="entity" id="dCourse" tabindex="0" aria-describedby="dCourseDesc">
+              <header class="entity-header">dCourse</header>
+              <ul class="attributes">
+                <li><strong>idCourse</strong></li>
+              </ul>
+              <p id="dCourseDesc" class="visually-hidden">Course dimension with primary key idCourse.</p>
+            </div>
+
+            <div class="entity" id="dDepartment" tabindex="0" aria-describedby="dDepartmentDesc">
+              <header class="entity-header">dDepartment</header>
+              <ul class="attributes">
+                <li><strong>idDepartment</strong></li>
+              </ul>
+              <p id="dDepartmentDesc" class="visually-hidden">Department dimension with primary key idDepartment.</p>
+            </div>
+
+            <div class="entity" id="dPreRequisite" tabindex="0" aria-describedby="dPreReqDesc">
+              <header class="entity-header">dPreRequisite</header>
+              <ul class="attributes">
+                <li><strong>idPreRequisite</strong></li>
+              </ul>
+              <p id="dPreReqDesc" class="visually-hidden">Prerequisite dimension with primary key idPreRequisite.</p>
+            </div>
+
+            <div class="entity" id="dStudent" tabindex="0" aria-describedby="dStudentDesc">
+              <header class="entity-header">dStudent</header>
+              <ul class="attributes">
+                <li><strong>idStudent</strong></li>
+              </ul>
+              <p id="dStudentDesc" class="visually-hidden">Student dimension (excluded from analysis).</p>
+            </div>
+
+            <div class="entity" id="dDiscipline" tabindex="0" aria-describedby="dDisciplineDesc">
+              <header class="entity-header">dDiscipline</header>
+              <ul class="attributes">
+                <li><strong>idDiscipline</strong></li>
+              </ul>
+              <p id="dDisciplineDesc" class="visually-hidden">Discipline dimension with primary key idDiscipline.</p>
+            </div>
+
+            <div class="entity fact" id="fProfessor" tabindex="0" aria-describedby="fProfessorDesc">
+              <header class="entity-header">fProfessor</header>
+              <ul class="attributes">
+                <li><strong>idStudent</strong> (FK)</li>
+                <li><strong>idCourse</strong> (FK)</li>
+                <li><strong>idDepartment</strong> (FK)</li>
+                <li><strong>idDiscipline</strong> (FK)</li>
+                <li><strong>idPreRequisite</strong> (FK)</li>
+              </ul>
+              <p id="fProfessorDesc" class="visually-hidden">Fact table linking professor teaching records to related entities.</p>
+            </div>
+          </div>
+
+          <div class="actions">
+            <a class="btn primary" href="star_schema.html" role="button">Open Star Schema</a>
+            <button class="btn" id="explainBtn">Show Design Rationale</button>
+          </div>
+
+          <div id="rationale" class="card hidden" aria-live="polite">
+            <h4>Design Rationale</h4>
+            <p>
+              The relational model contains core entities. For analytics focused on professors we will transform these into a star schema where the fact table captures teaching metrics and dimensions provide descriptive context.
+            </p>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <small>© 2026 — Sales Dashboard Power BI — Accessible demo</small>
+  </footer>
+
+  <div id="langMenu" class="lang-menu" role="menu" aria-hidden="true">
+    <button class="lang-item" data-lang="en">English (EN-US)</button>
+    <button class="lang-item" data-lang="pt-BR">Português (PT-BR)</button>
+    <button class="lang-item" data-lang="es">Español (ES)</button>
+  </div>
+
+  <script src="./src/script.js" defer></script>
+</body>
+</html>

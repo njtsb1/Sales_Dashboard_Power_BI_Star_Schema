@@ -1,5 +1,3 @@
-Daily learning
-
 # Sales Dashboard with Power BI using Star Schema
 
 Project developed at the Bootcamp Power BI Analyst Training, under the guidance of specialist [Juliana Zanelatto](https://github.com/julianazanelatto/ "Juliana Zanelatto").
@@ -7,10 +5,10 @@ Project developed at the Bootcamp Power BI Analyst Training, under the guidance 
 Description of the Dimensional Modeling Challenge
 
 - Objective:
-Create the dimensional diagram – star schema – based on the provided relational diagram.
+Create the dimensional diagram - star schema - based on the provided relational diagram.
 
 - Focus:
-Professor – object of analysis
+Professor - object of analysis
 You will assemble the star schema focusing on the analysis of professor data. Therefore, the fact table should reflect various data about the professor, courses taught, department to which they belong... This gives you an idea of ​​what should compose the fact table of the model in question.
 
 - Note: It is not necessary to reflect data about the students!
@@ -24,11 +22,11 @@ The Fact table containing the analyzed context must be created. Similarly, dimen
 
 - Relational Diagram
 
-![Screenshot](./img/relational_diagram.png)
+![Screenshot](./docs/public/relational_diagram.png)
 
 - Star Schema
 
-![Screenshot](./img/Star_Schema.png)
+![Screenshot](./docs/public/Star_Schema.png)
 
 [LICENSE](/LICENSE)
 

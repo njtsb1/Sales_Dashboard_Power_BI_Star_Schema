@@ -1,0 +1,60 @@
+# Node dependencies
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Build / output folders
+dist/
+build/
+out/
+.cache/
+.vite/
+.esbuild/
+.parcel-cache/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Editor / IDE
+.vscode/
+.idea/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+.AppleDouble
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.swp
+
+# Test / coverage
+coverage/
+
+# Database / local data
+*.sqlite
+*.db
+*.bak
+
+# Power BI (large binary files, usually not stored in repo)
+*.pbix
+*.pbit
+
+# Misc
+*.log.*
+*.orig
+*.rej
+
+# Secrets (if any)
+secrets.json
